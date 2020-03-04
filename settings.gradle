@@ -1,0 +1,6 @@
+rootProject.name='new-instance'
+include ':app'
+include ':newInstance-annotation'
+include ':newInstance-compiler'
+include ':newInstance-api'
+include ':loadGradlePlugin'

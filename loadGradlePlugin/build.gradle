@@ -1,0 +1,28 @@
+apply plugin: 'groovy'
+apply plugin: 'maven'
+dependencies {
+
+    compile gradleApi()
+    compile localGroovy()
+}
+dependencies {
+    implementation 'org.ow2.asm:asm:6.0'
+    implementation 'org.ow2.asm:asm-util:6.0'
+    implementation 'org.ow2.asm:asm-commons:6.0'
+    implementation 'com.android.tools.build:gradle-api:3.6.0'
+    implementation 'com.android.tools.build:gradle:3.6.0'
+
+}
+sourceCompatibility = "8"
+targetCompatibility = "8"
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            //设置插件的GAV参数
+            pom.groupId = 'com.instance.plugin'
+            pom.version = '1.0.7'
+            //文件发布到下面目录
+            repository(url: uri('../repo'))
+        }
+    }
+}
