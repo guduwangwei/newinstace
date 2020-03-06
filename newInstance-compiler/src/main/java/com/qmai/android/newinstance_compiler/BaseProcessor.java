@@ -19,7 +19,7 @@ public abstract class BaseProcessor extends AbstractProcessor {
     protected Filer filer;
 
     protected Logger logger;
-    private Types types;
+    protected Types types;
 
     @Override
     public synchronized void init(ProcessingEnvironment processingEnv) {

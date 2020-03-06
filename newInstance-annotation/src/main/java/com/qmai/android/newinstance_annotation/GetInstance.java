@@ -12,7 +12,7 @@ import java.lang.annotation.Target;
  * @Description
  **/
 @Retention(RetentionPolicy.CLASS)
-@Target(ElementType.TYPE)
+@Target({ElementType.TYPE})
 public @interface GetInstance {
 
     String path();

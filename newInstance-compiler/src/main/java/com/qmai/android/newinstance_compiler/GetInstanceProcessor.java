@@ -66,7 +66,7 @@ public class GetInstanceProcessor extends BaseProcessor {
                 .addModifiers(Modifier.PUBLIC)
                 .addMethod(initBuilder.build())
                 .build();
-//
+
         JavaFile.builder("com.qmai.android.instance", typeSpec)
                 .build().writeTo(filer);
     }
