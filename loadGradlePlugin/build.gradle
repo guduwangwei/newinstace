@@ -20,7 +20,7 @@ uploadArchives {
         mavenDeployer {
             //设置插件的GAV参数
             pom.groupId = 'com.instance.plugin'
-            pom.version = '1.0.7'
+            pom.version = '1.0.10'
             //文件发布到下面目录
             repository(url: uri('../repo'))
         }

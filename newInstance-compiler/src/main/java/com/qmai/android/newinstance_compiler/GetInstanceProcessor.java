@@ -55,14 +55,18 @@ public class GetInstanceProcessor extends BaseProcessor {
         MethodSpec.Builder initBuilder
                 = MethodSpec.methodBuilder("init")
                 .addModifiers(Modifier.PUBLIC, Modifier.STATIC);
+
         for (Element element : routeElements) {
             GetInstance gT = element.getAnnotation(GetInstance.class);
             String path = gT.path();
+            logger.warning("注解:"+path);
             TypeMirror tm = element.asType();
             ClassName implClassName = ClassName.get((TypeElement) element);
             initBuilder.addStatement("$T.registerImpl($S,$T.class)", className("com.qmai.android.newinstance_api.ImplLoader"), path, implClassName);
         }
-        TypeSpec typeSpec = TypeSpec.classBuilder("ImplInfo_" + UUID.randomUUID().toString().replace('-', '_'))
+        String className = "ImplInfo_" + UUID.randomUUID().toString().replace('-', '_');
+        logger.warning("className--"+className);
+        TypeSpec typeSpec = TypeSpec.classBuilder(className)
                 .addModifiers(Modifier.PUBLIC)
                 .addMethod(initBuilder.build())
                 .build();

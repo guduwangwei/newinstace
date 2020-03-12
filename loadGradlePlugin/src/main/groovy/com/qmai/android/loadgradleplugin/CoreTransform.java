@@ -87,7 +87,8 @@ public class CoreTransform extends Transform {
                     while (entries.hasMoreElements()) {
                         JarEntry entry = entries.nextElement();
                         String name = entry.getName();
-                        if (name.endsWith(".class") && name.startsWith("ImplInfo_")) {
+                        System.out.println("<< jar ---" + name +""+(name.endsWith(".class") && name.startsWith("ImplInfo_")));
+                        if (name.endsWith(".class") && name.startsWith("com/qmai/android/instance/ImplInfo_")) {
                             String className = name.substring(0, name.lastIndexOf(".")).replace("/", ".");
                             System.out.println("<< jar 找到class  = " + className + ">>");
                             implInfoClasses.add(className);
@@ -157,7 +158,7 @@ public class CoreTransform extends Transform {
         return s.substring(start, s.length() - SdkConstants.DOT_CLASS.length());
     }
 
-    //
+
     private byte[] generateCode(Set<String> implClasses) {
         System.out.println("----开始生成代码----");
         ClassWriter cw = new ClassWriter(ClassWriter.COMPUTE_FRAMES | ClassWriter.COMPUTE_MAXS);
